@@ -1,0 +1,7 @@
+{
+    "name": "edisons-sleep-app",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "react-vite"
+}
