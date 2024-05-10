@@ -4,13 +4,9 @@ on:
     pull_request:
         branches:
             - "development"
-    push:
-        branches:
-            - "development"
-    workflow_dispatch:
 
 jobs:
-    build_android:
+    test_ionic:
         runs-on: ubuntu-latest
 
         steps:
@@ -19,7 +15,7 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v2.1.5
               with:
-                  node-version: 21.x
+                  node-version: 18.x
 
             - name: Install Ionic
               run: npm install -g @ionic/cli
@@ -27,15 +23,5 @@ jobs:
             - name: Install app dependencies
               run: npm install
 
-            - name: Copy web assets to native Android project
-              run: npx cap copy android
-
-            - name: Build Android Dev APK
-              run: |
-                  cd android
-                  ./gradlew assembleDebug
-
-            - name: Build Android Release APK
-              run: |
-                  cd android
-                  ./gradlew bundleRelease
+            - name: Run Unit Tests
+              run: npm run test.unit
