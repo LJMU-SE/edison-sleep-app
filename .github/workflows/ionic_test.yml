@@ -30,6 +30,9 @@ jobs:
             - name: Copy web assets to native Android project
               run: npx cap copy android
 
+            - name: Make gradlew executable
+              run: chmod +x ./gradlew
+
             - name: Build Android Dev APK
               run: |
                   cd android

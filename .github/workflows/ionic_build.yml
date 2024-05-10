@@ -30,6 +30,9 @@ jobs:
             - name: Open native Android project in Android Studio
               run: npx cap open android
 
+            - name: Make gradlew executable
+              run: chmod +x ./gradlew
+
             - name: Build Android APK
               run: |
                   cd android
