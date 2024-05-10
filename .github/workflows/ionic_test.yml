@@ -1,0 +1,27 @@
+name: Android Application Build Tests
+
+on:
+    pull_request:
+        branches:
+            - "production"
+
+jobs:
+    test_ionic:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v2.1.5
+              with:
+                  node-version: 18.x
+
+            - name: Install Ionic
+              run: npm install -g @ionic/cli
+
+            - name: Install app dependencies
+              run: npm install
+
+            - name: Run Unit Tests
+              run: npm run test.unit
