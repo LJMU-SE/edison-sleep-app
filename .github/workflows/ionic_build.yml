@@ -24,9 +24,6 @@ jobs:
             - name: Install app dependencies
               run: npm install
 
-            - name: Add Android platform to Capacitor
-              run: npx cap add android
-
             - name: Copy web assets to native Android project
               run: npx cap copy android
 
