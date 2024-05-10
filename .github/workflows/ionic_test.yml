@@ -27,18 +27,8 @@ jobs:
             - name: Install app dependencies
               run: npm install
 
-            - name: Copy web assets to native Android project
-              run: npx cap copy android
+            - name: Run Unit Tests
+              run: npm test.unit
 
-            - name: Make gradlew executable
-              run: chmod +x ./gradlew
-
-            - name: Build Android Dev APK
-              run: |
-                  cd android
-                  ./gradlew assembleDebug
-
-            - name: Build Android Release APK
-              run: |
-                  cd android
-                  ./gradlew bundleRelease
+            - name: Run E2E Tests
+              run: npm test.e2e
